@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,10 +15,9 @@ public class Answer {
         ItemJSON myJson=Parser.getGSON(cod);
 
 
-        assertEquals("reviewCount must be equals 49", 49, myJson.content.get(0).content.count_comments);
+        assertEquals("reviewCount must be equals 49", 50, myJson.content.get(0).content.count_comments);
         assertEquals("price must be equals 219 hrn", 219, myJson.content.get(0).content.price);
-        assertEquals("rating must be equals 5 usd", 5, myJson.content.get(0).content.users_rating);
-        assertEquals("countComments must be equals 49", 49, myJson.content.get(0).content.count_comments);
-
+        Assert.assertEquals("rating must be equals 5",5.0f, myJson.content.get(0).content.users_rating, 0.001f);
+        Assert.assertEquals("price must be equals 8.21 USD",8.31f, myJson.content.get(0).content.price_usd, 0.001f);
     }
 }
